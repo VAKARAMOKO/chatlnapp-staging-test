@@ -1,0 +1,82 @@
+<div class="column is-9 is-centered ">
+  <% if user_signed_in? %>
+    <article class="media box">
+      <div class="media-left">
+        <figure class="image is-32x32 is-rounded">
+           <%= link_to i  edit_user_registration_path, class: "button" do %>
+                <img src="https://bulma.io/images/placeholders/32x32.png">
+           <% end %>
+        </figure>
+      </div>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <span>
+             <% if current_user.status=='1' %>
+              <p><%= current_user.username %>, Professeur au <%= current_user.school%> de <%= current_user.city %></p>
+              <% else %>
+              <p><%= current_user.username %>, Elève de <%= current_user.level_class %> au <%= current_user.school%> de <%= current_user.city %></p>
+             <% end %>               
+            </span>
+            
+          </p>
+          <p class="content container">
+            <%= link_to "Ajouter votre question ou lien ?", new_question_path , class:"is-info" %>
+          </p>
+        </div>
+      </div>
+    </article>
+  <% end %>
+  <div class="media-content">
+  <% @courses.each do | course| %>
+    <div class="box">
+      <!--le titre/!-->
+      <div class="title">
+        <p><%= course.title %></p>    
+      </div><br> 
+      <!-- avatar /!-->      
+      <article class="media">
+        <div class="media-left">
+          <figure class="image is-64x64">
+            
+        </div>
+        <!--infos createur Nom_complet et son bio/!-->
+        <div class="media-content">
+          <div class="content">
+            <img src="phttps://bulma.io" alt="">
+          </div>
+        </div>
+      </article>
+      <!--le corps du course /!-->
+      <div class="media-content">
+        <div class="content">
+          <div class="box">
+            <%= sanitize course.corps %>
+            
+          </div>
+        </div>
+      </div>
+
+      <!--options supplementaires:/!-->
+      <% if current_user.id == course.user_id %>
+        <nav class="level">
+          <div class="level-left is-mobile is-right">
+            <%= link_to course, class: "level-item" do %>
+              <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
+            <% end %>
+            <%= link_to edit_course_path(course), class: "level-item" do %>
+              <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+            <% end %>
+            <%= link_to course, method: :delete, data: { confirm: "Etes-vous sûre de vouloir supprimez ?" } do %>
+                <span class="icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+            <% end %> 
+          </div>              
+        </nav>
+      <% end %>
+      <!--affiché les commentaires deja cree /!-->
+      <!--soumettre le formulaire de commentaire/!-->
+      
+    </div>
+  <% end %>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-10">
+
+    <%= simple_form_for(@course) do |f| %>
+      <%= f.error_notification %>
+
+          <div class="field">
+            <div class="control">
+              <%= f.input :title, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" },class:"active", placeholder: "Donnez un titre qui attire l'attention", label:"Titre du cours:" %>
+            </div>
+          </div>
+
+
+        <div class="columns">
+          <div class="field column is-6">
+            <div class="control">
+              <label class="label">Niveau :</label>
+              <div class="control has-icons-left">
+                <span class="select">
+                  <%= f.input_field :level_course, collection: Course::NIVEAUX, prompt: "Selectionne le niveau", label:"Niveau du cours:" %>
+                </span>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-briefcase"></i>
+                </span>
+              </div>
+            </div>
+          </div>   
+
+          <div class="field column is-6">
+            <div class="control">
+              <label class="label">Matière:</label>
+              <div class="control has-icons-left">
+                <span class="select">
+                  <%= f.input_field :material_course, collection: Course::MATIERES, prompt: "Selectionne la matère", label:"Selectionne la matiere" %>
+                </span>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-briefcase"></i>
+                </span>
+              </div>
+            </div>
+          </div>   
+        </div>
+
+        
+
+        <div class="field">
+            <div class="control">
+             <%= f.input :corps, required: true, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" }, label:'corps du sujet' %>
+             
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+             <%= f.input :description, required: true, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" }, label:'la description du sujet' %>
+             
+            </div>
+        </div>
+        <%= f.button :submit," Créer le Doc" ,class: "button is-info is-large is-rounded" %>
+      <% end %>
+    </div>
+    </div>
+  </div>
+</div>

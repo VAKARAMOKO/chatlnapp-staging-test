@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  class_level: MyString
+  matiere: MyString
+  corps: 
+  description: 
+
+two:
+  title: MyString
+  class_level: MyString
+  matiere: MyString
+  corps: 
+  description: 
