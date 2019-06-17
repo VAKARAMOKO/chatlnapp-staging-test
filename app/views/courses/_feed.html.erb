@@ -1,4 +1,4 @@
-<div class="column is-9 is-centered ">
+<div class="column is-10 is-centered ">
   <% if user_signed_in? %>
     <article class="media box">
       <div class="media-left">
@@ -21,7 +21,7 @@
             
           </p>
           <p class="content container">
-            <%= link_to "Ajouter votre question ou lien ?", new_question_path , class:"is-info" %>
+            <%= link_to "Ajouter votre question ou lien ?", root_path , class:"is-info" %>
           </p>
         </div>
       </div>
@@ -43,7 +43,9 @@
         <!--infos createur Nom_complet et son bio/!-->
         <div class="media-content">
           <div class="content">
-            <img src="phttps://bulma.io" alt="">
+            <%= link_to i  edit_user_registration_path, class: "button" do %>
+                <img src="https://bulma.io/images/placeholders/32x32.png">
+           <% end %>
           </div>
         </div>
       </article>
