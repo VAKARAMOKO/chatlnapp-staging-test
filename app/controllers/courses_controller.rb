@@ -1,54 +1,59 @@
 class CoursesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :owned_course, only: [:edit, :update, :destroy]
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  #impressionist apres a 
 
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+
+   # @comment = @course.comments.order('created_at asc')
+    @courses = Course.all.order("created_at Desc").page params[:page]
+    @course = Course.new
+
   end
 
   # GET /courses/1
   # GET /courses/1.json
   def show
+        
   end
 
   # GET /courses/new
   def new
-    @course = Course.new
+    @course = current_user.course.build
   end
 
   # GET /courses/1/edit
   def edit
   end
-
+  # remove avatar
+  
   # POST /courses
   # POST /courses.json
-  def create
-    @course = Course.new(course_params)
 
-    respond_to do |format|
+  def create
+    @course = current_user.course.build(course_params)  
       if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
-        format.json { render :show, status: :created, location: @course }
+        flash[:success] = "Le cours a été bien ajouter"
+        redirect_to root_path
       else
-        format.html { render :new }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
+        flash[:alert] = "Votre nouveau cours n'a pas pu être crée !  Veuillez vérifier le formulaire."
+        render :new        
       end
-    end
   end
 
   # PATCH/PUT /courses/1
   # PATCH/PUT /courses/1.json
   def update
-    respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
-        format.json { render :show, status: :ok, location: @course }
+        flash[:sucess] = "Cours mis à jour"
+        redirect_to root_path
       else
-        format.html { render :edit }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
-    end
+        flash[:alert] = "Mise à jour échouée..."
+        render :edit
+      end   
   end
 
   # DELETE /courses/1
@@ -69,6 +74,13 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:title, :class_level, :matiere, :corps, :description)
+      params.require(:course).permit(:title, :description, :corps, :level_course, :user_id)
     end
+
+    def owned_course
+      unless current_user == @courses.user
+        flash[:alert] = "Cette action n'est pas possible!"
+        redirect_to root_path
+    end
+end
 end
