@@ -1,29 +1,27 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @course.title %>
-</p>
-
-<p>
-  <strong>Class level:</strong>
-  <%= @course.class_level %>
-</p>
-
-<p>
-  <strong>Matiere:</strong>
-  <%= @course.matiere %>
-</p>
-
-<p>
-  <strong>Corps:</strong>
-  <%= @course.corps %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @course.description %>
-</p>
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-10">
+        <div class="subtitle">
+          <%= @course.title %>
+        </div>
+        <article class="media">
+          <div class="media-left">
+            <figure class="image">
+              <%= link_to i  edit_user_registration_path, class: "button" do %>
+                <img src="https://bulma.io/images/placeholders/32x32.png">
+              <% end %>
+            </figure>
+          </div>
+          <!--infos createur Nom_complet et son bio/!-->
+          <div class="media-content">
+            <div class="content">
+              <%= sanitize @course.corps %>
+            </div>
+          </div>
+        </article>
+    </div>   
+  </div>
+ </div>
+</div>
