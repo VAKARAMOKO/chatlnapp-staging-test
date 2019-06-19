@@ -88,6 +88,6 @@ test:
 #
 production:
   <<: *default
-  database: chatln_prod
+  database: chatln_production
   username: chatln
   password: <%= ENV['CHATLN_DATABASE_PASSWORD'] %>
