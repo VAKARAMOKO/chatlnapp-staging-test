@@ -91,3 +91,5 @@ production:
   database: chatln_production
   username: chatln
   password: <%= ENV['CHATLN_DATABASE_PASSWORD'] %>
+
+

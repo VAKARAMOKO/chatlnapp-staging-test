@@ -15,7 +15,36 @@
             <div class="control">
               <%= f.input :number_mobile, required: false,  input_html: { class: "input"}, wrapper: false, label_html: { class: "label" }, label:'N° Tel:', placeholder:"N° Téléphone" %>
             </div>
+          </div><div class="field">
+            <div class="control">
+              <%= f.input :city, required: false,  input_html: { class: "input"}, wrapper: false, label_html: { class: "label" }, label:'Ville:', placeholder:"votre ville" %>
+            </div>
           </div>
+            <div class="field">
+            <div class="control">
+              <%= f.input :school_name, required: false,  input_html: { class: "input"}, wrapper: false, label_html: { class: "label" }, label:'Ecole :', placeholder:"Nom de l'école:" %>
+            </div>
+          </div>
+          
+            <div class="field column">
+              <div class="control"><!-- un liste ou /!-->
+                <%= f.input :status, as: :radio_buttons, collection: [['0', 'Eleve'], ['1', 'Prof']], label_method: :second, value_method: :first, selected: 0, label:"Status :" %> 
+              </div>
+            </div>
+
+            <div class="field column is-7">
+            <div class="control">
+              <label class="label">Niveau:</label>
+              <div class="control has-icons-left">
+                <span class="select">
+                  <%= f.input_field :level_class, collection: User::NIVEAUX, prompt: "Niveau de la classe", label:"Selectionne la classe" %>
+                </span>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-home"></i>
+                </span>
+              </div>
+            </div>
+          </div>  
           
 
 
