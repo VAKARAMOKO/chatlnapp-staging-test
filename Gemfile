@@ -48,7 +48,7 @@ gem 'carrierwave', '~> 1.3', '>= 1.3.1'
 #time ago
 #gem 'time_ago_in_words', '~> 0.1.1'#no implement
 # editor
-#gem 'summernote-rails', '~> 0.8.10.0'
+gem 'summernote-rails', '~> 0.8.10.0'
 #loading content
 #gem 'kaminari', '~> 1.1', '>= 1.1.1'
 #vote
@@ -72,9 +72,10 @@ gem 'devise', '~> 4.6', '>= 4.6.2'
 #stylisation
 gem 'bulma-rails', '~> 0.7.5'
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
-gem 'jquery-rails'
-gem "font-awesome-rails"
+#gem 'jquery-rails'
+#gem "font-awesome-rails"
 #gem 'codemirror-rails'
+#gem 'jquery-turbolinks', '~> 2.1'
 
 
 

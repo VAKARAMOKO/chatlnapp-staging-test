@@ -9,7 +9,7 @@ class CoursesController < ApplicationController
   def index
 
    # @comment = @course.comments.order('created_at asc')
-    @courses = Course.all.order("created_at Desc").page params[:page]
+    @courses = Course.all.order("created_at Desc")
     @course = Course.new
 
   end
