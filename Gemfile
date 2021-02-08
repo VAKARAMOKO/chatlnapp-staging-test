@@ -44,7 +44,7 @@ gem 'mini_magick', '~> 4.8'
 # builder form
 gem 'simple_form', '~> 4.1'
 #carrierwave
-gem 'carrierwave', '~> 1.3', '>= 1.3.1'
+gem 'carrierwave', '~> 1.3'
 #time ago
 #gem 'time_ago_in_words', '~> 0.1.1'#no implement
 # editor
